@@ -15,6 +15,12 @@ output directory
 
 File
 
+.EXAMPLE
+
+Split log file into 10 parts
+
+Split-File -chunks 10 -out chopped large.log
+
 #>
 param(
     [parameter(Mandatory=$true)]
@@ -37,13 +43,16 @@ try {
         $currPath = $out
     }
 
+    if (![System.IO.Path]::IsPathRooted($currPath)) {
+        $currPath = "{0}\{1}" -f $pwd.Path,$currPath
+    }
+
     $len = Get-Childitem $file | Select -Expand Length
 
     $lineCount = 0
     gc $file -ReadCount 3000|%{$lineCount += $_.Length}
 
     $chunkSize = [Math]::ceiling($lineCount/$chunks)
-
 
     $counter = 0
     $chunk = 0
