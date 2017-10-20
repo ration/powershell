@@ -189,7 +189,7 @@ Get-ChildItem -recurse:$recurse -filter:$filter | Where-Object { !($not -and $_.
                     }   
                 }
             }
-            elseif (!$l -and !$p) {
+            if (!$l -and !$p) {
                 if ($pipe) {
                     Get-Match -inputText $_.Line -regex $regex | Write-Output
                 } else {
