@@ -15,3 +15,7 @@ Copy current directory in the clipboard
 ## f
 
 Find filenames with given pattern
+
+## g
+
+Helper for changing directories quickly
