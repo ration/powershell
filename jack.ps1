@@ -3,6 +3,12 @@
 
 Conveniance script for Find-String - finds in java files
 
+.EXAMPLE
+
+jack someinterface -grep implements
+
+Find someinterface implementations (assuming on same line)
+
 #> 
 param (
     [parameter(Mandatory=$true)]
