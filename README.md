@@ -19,3 +19,7 @@ Find filenames with given pattern
 ## g
 
 Helper for changing directories quickly
+
+## Invoke-Parallel
+
+Run some costly operation in parallel
