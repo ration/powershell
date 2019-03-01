@@ -26,6 +26,7 @@ $gotos = @{
     "pf64" = "C:\Program Files";
     "dl" = "$HOME\Downloads";
     "log" = "$HOME\log\";
+	"git" = "c:\tatu\git";
 }
 
 if ($args.length -ge 1) {
@@ -58,34 +59,6 @@ if ($args.length -ge 1) {
 
    $cur = pwd
    dir "*$pattern*" | select -First 1| select-object -exp name | cd
-   if ($cur.Path -eq (pwd).Path) {
-       $dir = $gotos["majors"]
-       Import-Module $dir\Response-Hg 
-       Import-Module $dir\Response-Maven 
-       Import-Module $dir\Response-Jenkins 
-       Import-Module $dir\Response-Common 
-       $cache = Get-ResponseCache
-       $comps = @()
-       foreach ($key in $cache.Keys) {
-           if ($key -match "$pattern") {
-               $comps += $key
-           }
-       } 
-       if ($comps.length -gt 1) {
-           for ($i = 0; $i -lt $comps.length; $i++) {
-      	       write-host "(" $i ")" $comps[$i] 
-           }
-           $sel = read-host "?"
-           if ($sel|select-string -pattern "\d+" -quiet) {
-               $cache[$comps[$sel]].Project
-               cd $cache[$comps[$sel]].Path
-           }
-           exit
-       } elseif ($comps.Length > 0) {
-           $comps[0]
-           cd $cache[$comps[0]].Path
-       }
-   }
-
+  
 }
 
