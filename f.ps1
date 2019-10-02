@@ -16,7 +16,7 @@ param (
     [switch]$goto
 )
 
-$editor = "C:\ProgramData\chocolatey\bin\emacsclient.exe"
+$editor = "c:/Tatu/apps/emacs-26/bin/emacsclient.exe"
 
 [string] $exclude = "(\.hg)"
 
